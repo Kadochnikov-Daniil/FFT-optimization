@@ -1,0 +1,35 @@
+For dft8:
+sipeed@lpi4a:~/Kadochnikov$ ./dft8_perf
+================================
+Testing DFT8
+================================
+79 cycles min
+9.875 CPE min
+================================
+80 cycles average
+10 CPE average
+================================
+
+For dft16:
+sipeed@lpi4a:~/Kadochnikov$ ./dft16_perf
+================================
+Testing DFT16
+================================
+206 cycles min
+12.875 CPE min
+================================
+209 cycles average
+13.0625 CPE average
+================================
+
+For dft32:
+sipeed@lpi4a:~/Kadochnikov$ ./dft32_perf
+================================
+Testing DFT32
+================================
+622 cycles min
+19.4375 CPE min
+================================
+632 cycles average
+19.75 CPE average
+================================
