@@ -1,10 +1,9 @@
 #include "dft.h"
 
-#define Pi_4 0.707106781186548
-
 extern void dft8Fwd(const cfloat32_t *pSrc, cfloat32_t *pDst)
 {
-    //DFT2
+    //dft4 x dft2
+    //DFT2 * 4
     cfloat32_t firstTmpDst[8];
     firstTmpDst[0].re = pSrc[0].re + pSrc[4].re;
     firstTmpDst[0].im = pSrc[0].im + pSrc[4].im;
@@ -27,15 +26,16 @@ extern void dft8Fwd(const cfloat32_t *pSrc, cfloat32_t *pDst)
     firstTmpDst[7].im = pSrc[7].im - pSrc[3].im;
 
     //coefficient multiplication
-    float im = (firstTmpDst[3].im - firstTmpDst[3].re) * Pi_4;
-    firstTmpDst[3].re = (firstTmpDst[3].re + firstTmpDst[3].im) * Pi_4;
+    float pi_4 = 0.707106781186548;
+    float im = (firstTmpDst[3].im - firstTmpDst[3].re) * pi_4;
+    firstTmpDst[3].re = (firstTmpDst[3].re + firstTmpDst[3].im) * pi_4;
     firstTmpDst[3].im = im;
 
-    im = (firstTmpDst[7].im + firstTmpDst[7].re) * Pi_4;
-    firstTmpDst[7].re = (firstTmpDst[7].re - firstTmpDst[7].im) * Pi_4;
+    im = (firstTmpDst[7].im + firstTmpDst[7].re) * pi_4;
+    firstTmpDst[7].re = (firstTmpDst[7].re - firstTmpDst[7].im) * pi_4;
     firstTmpDst[7].im = im;
 
-    //DFT4
+    //DFT4 * 2
     cfloat32_t secondTmpDst[8];
     secondTmpDst[0].re = firstTmpDst[0].re + firstTmpDst[4].re;
     secondTmpDst[0].im = firstTmpDst[0].im + firstTmpDst[4].im;

@@ -8,6 +8,7 @@
 #include <math.h>
 #include <stdint.h>
 #include <stdlib.h>
+#include "riscv_vector.h"
 
 #define OWN_2PI 0x1.921fb54442d18p+2
 
